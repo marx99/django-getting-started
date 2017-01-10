@@ -27,5 +27,5 @@ def before_todo_save(todo):
     
 @engine.define
 def bisi_reply():
-    time.sleep(random.randint(1,10))
-    bisi_discuz.bisi_reply_mulit(random.randint(10,15))
+    time.sleep(random.randint(1,1000))
+    bisi_discuz.bisi_reply_mulit(random.randint(100,200))

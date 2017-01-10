@@ -46,7 +46,7 @@ def bisi_reply_mulit(total=100):
             discuz.reply(tid[0],msg=msg)
         except:
             pass
-        time.sleep(random.randint(31,35))
+        time.sleep(random.randint(31,120))
 
 def getListBisi(url):
     try:
