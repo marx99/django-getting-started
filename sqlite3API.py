@@ -157,6 +157,21 @@ def fetchall(conn, sql):
     else:
         print('the [{}] is empty or equal None!'.format(sql)) 
 
+def fetchmany(conn, sql):
+    '''查询所有数据'''
+    if sql is not None and sql != '':
+        cu = get_cursor(conn)
+        if SHOW_SQL:
+            print('执行sql:[{}]'.format(sql))
+        cu.execute(sql)
+        r = cu.fetchall()
+        if len(r) > 0:
+            return r
+#            for e in range(len(r)):
+#                print(r[e])
+    else:
+        print('the [{}] is empty or equal None!'.format(sql)) 
+        
 def fetchone(conn, sql, data):
     '''查询一条数据'''
     if sql is not None and sql != '':
@@ -317,7 +332,8 @@ def main():
 
 if __name__ == '__main__':
 #    main()
-    sql = 'select * from student order by RANDOM() limit 2'
-    DB_FILE_PATH = 'H:\\ma\\python\\DiscuzAPI\\hongten.db'
+    sql = 'select * from bisi_discuz order by RANDOM() limit 2'
+    DB_FILE_PATH = 'hongten.db'
     conn = get_conn(DB_FILE_PATH)
-    fetchall(conn,sql)
+    r=fetchmany(conn,sql)
+    print(r)

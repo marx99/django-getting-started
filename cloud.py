@@ -3,7 +3,9 @@
 from django.core.wsgi import get_wsgi_application
 from leancloud import Engine
 from leancloud import LeanEngineError
-import sqlite3API
+import time
+import random
+import bisi_discuz
 
 engine = Engine(get_wsgi_application())
 
@@ -22,10 +24,8 @@ def before_todo_save(todo):
         raise LeanEngineError('内容不能为空')
     if len(content) >= 240:
         todo.set('content', content[:240] + ' ...')
-
+    
 @engine.define
-def test_sqlite3():
-    sql = 'select * from student order by RANDOM() limit 2'
-    DB_FILE_PATH = 'hongten.db'
-    conn = sqlite3API.get_conn(DB_FILE_PATH)
-    sqlite3API.fetchall(conn,sql)
+def bisi_reply():
+    time.sleep(random.randint(1,10))
+    bisi_discuz.bisi_reply_mulit(random.randint(10,15))
