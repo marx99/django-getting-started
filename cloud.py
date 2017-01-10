@@ -3,7 +3,7 @@
 from django.core.wsgi import get_wsgi_application
 from leancloud import Engine
 from leancloud import LeanEngineError
-
+import sqlite3API
 
 engine = Engine(get_wsgi_application())
 
@@ -23,3 +23,9 @@ def before_todo_save(todo):
     if len(content) >= 240:
         todo.set('content', content[:240] + ' ...')
 
+@engine.define
+def test_sqlite3():
+    sql = 'select * from student order by RANDOM() limit 2'
+    DB_FILE_PATH = 'hongten.db'
+    conn = sqlite3API.get_conn(DB_FILE_PATH)
+    sqlite3API.fetchall(conn,sql)
