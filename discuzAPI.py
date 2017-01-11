@@ -59,15 +59,16 @@ class DiscuzAPI:
         ''' 回帖 '''
         url = self.forumUrl + '/forum.php?mod=post&action=reply&fid=41&tid='+str(tid)+'&extra=page%3D1&replysubmit=yes&infloat=yes&handlekey=fastpost&inajax=1'
         postData = {'formhash': self.formhash, 'message': msg, 'subject': subject, 'posttime':int(time.time()) }
-        html = self.rq.post(url,postData)        
-
-#        print (html.text)
-        if u'回復發佈成功' in html.text:
-            print ('reply success!',tid,time.ctime())
-        else:
-            print(html.text)
-            print(msg)
-#            print ('reply faild!',tid,time.ctime())
+        try:
+            html = self.rq.post(url,postData,timeout=5)        
+            if u'回復發佈成功' in html.text:
+                print ('reply success!',tid,time.ctime())
+            else:
+                print(html.text)
+                print(msg)
+    #            print ('reply faild!',tid,time.ctime())            
+        except Exception as ex:
+            print(ex)
 
     def sign(self,msg = u'哈哈，我来签到了！'):
         ''' 签到 '''
