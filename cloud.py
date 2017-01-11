@@ -28,6 +28,13 @@ def before_todo_save(todo):
 @engine.define
 def bisi_reply():
     print('start...')
-    time.sleep(random.randint(1,1000))
+    time.sleep(random.randint(1,300))
     bisi_discuz.bisi_reply_mulit(random.randint(100,200))
     print('END!')
+    
+@engine.define
+def bisi_reply_one():
+#    print('start...')
+#    time.sleep(random.randint(1,1000))
+    bisi_discuz.bisi_reply_mulit(15)
+    print('END!')    
