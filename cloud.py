@@ -36,5 +36,7 @@ def bisi_reply():
 def bisi_reply_one():
 #    print('start...')
 #    time.sleep(random.randint(1,1000))
-    bisi_discuz.bisi_reply_mulit(15)
-    print('END!')    
+    print('bisi_reply_one start...')
+    time.sleep(random.randint(1,100))
+    bisi_discuz.bisi_reply_mulit(random.randint(20,30))
+    print('bisi_reply_one END!')    

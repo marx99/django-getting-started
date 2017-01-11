@@ -29,10 +29,12 @@ def bisi_reply_mulit(total=100):
     conn = sqlite3API.get_conn(DB_FILE_PATH)
     info_tid=sqlite3API.fetchmany(conn,sql_tid)
     info_content=sqlite3API.fetchmany(conn,sql_content)
-    
-    url = 'http://hkbbcc.net/'
-    user='marx88'
-    password='6547899Mm'
+    data='marx88'
+    info_user = sqlite3API.fetchone(conn,"select url,user,password from master where user=?",data)
+    url = info_user[0]
+    user=info_user[1]
+    password=info_user[2]
+#    print (password)
     discuz = DiscuzAPI(url,user,password)       
     discuz.login()
     discuz.sign()
@@ -90,4 +92,4 @@ def getReplyContent(url):
     time.sleep(1)
     
 if __name__ == '__main__':
-    bisi_reply_mulit(random.randint(10,15))
+    bisi_reply_mulit(random.randint(1,2))

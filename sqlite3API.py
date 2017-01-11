@@ -179,13 +179,14 @@ def fetchone(conn, sql, data):
             #Do this instead
             d = (data,) 
             cu = get_cursor(conn)
-            if SHOW_SQL:
-                print('执行sql:[{}],参数:[{}]'.format(sql, data))
+#            if SHOW_SQL:
+#                print('执行sql:[{}],参数:[{}]'.format(sql, data))
             cu.execute(sql, d)
             r = cu.fetchall()
             if len(r) > 0:
-                for e in range(len(r)):
-                    print(r[e])
+                return r[0]
+#                for e in range(len(r)):
+#                    print(r[e])
         else:
             print('the [{}] equal None!'.format(data))
     else:

@@ -60,7 +60,7 @@ class DiscuzAPI:
         url = self.forumUrl + '/forum.php?mod=post&action=reply&fid=41&tid='+str(tid)+'&extra=page%3D1&replysubmit=yes&infloat=yes&handlekey=fastpost&inajax=1'
         postData = {'formhash': self.formhash, 'message': msg, 'subject': subject, 'posttime':int(time.time()) }
         try:
-            html = self.rq.post(url,postData,timeout=5)        
+            html = self.rq.post(url,postData,timeout=4)        
             if u'回復發佈成功' in html.text:
                 print ('reply success!',tid,time.ctime())
             else:
