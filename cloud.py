@@ -26,17 +26,17 @@ def before_todo_save(todo):
         todo.set('content', content[:240] + ' ...')
     
 @engine.define
-def bisi_reply():
-    print('start...')
-    time.sleep(random.randint(1,300))
-    bisi_discuz.bisi_reply_mulit(random.randint(100,200))
-    print('END!')
+def bisi_reply_freevip():
+    print('bisi_reply_freevip start...')
+    time.sleep(random.randint(1,100))
+    bisi_discuz.bisi_reply_mulit('免费VIP',random.randint(19,40))
+    print('bisi_reply_freevip END!')
     
 @engine.define
 def bisi_reply_one():
 #    print('start...')
 #    time.sleep(random.randint(1,1000))
-    print('bisi_reply_one start...')
+    print('bisi_reply_marx88 start...')
     time.sleep(random.randint(1,100))
-    bisi_discuz.bisi_reply_mulit(random.randint(20,30))
-    print('bisi_reply_one END!')    
+    bisi_discuz.bisi_reply_mulit('marx88',random.randint(19,35))
+    print('bisi_reply_marx88 END!')    

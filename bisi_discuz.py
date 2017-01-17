@@ -16,20 +16,20 @@ import sqlite3API
 
 DB_FILE_PATH = 'hongten.db'
 
-def bisi_reply_mulit(total=100):
+def bisi_reply_mulit(userid = 'marx88' , total=100):
     
 #    mysql = mysqlAPI('test')
 #    info_tid = mysql.select_mysql('select id from bisi_discuz where reply_num > 40 order by RAND() limit ' + str(total))
 #    info_content = mysql.select_mysql('select content from reply_content order by RAND() limit ' + str(total*3))
 #    mysql.close_mysql()
 
-    sql_tid ='select id from bisi_discuz where reply_num > 40 order by RANDOM() limit ' + str(total)
+    sql_tid ='select id from bisi_discuz where reply_num > 10 order by RANDOM() limit ' + str(total)
     sql_content = 'select content from reply_content order by RANDOM() limit ' + str(total*3)
     
     conn = sqlite3API.get_conn(DB_FILE_PATH)
     info_tid=sqlite3API.fetchmany(conn,sql_tid)
     info_content=sqlite3API.fetchmany(conn,sql_content)
-    data='marx88'
+    data=userid
     info_user = sqlite3API.fetchone(conn,"select url,user,password from master where user=?",data)
     url = info_user[0]
     user=info_user[1]
@@ -48,7 +48,7 @@ def bisi_reply_mulit(total=100):
             discuz.reply(tid[0],msg=msg)
         except:
             pass
-        time.sleep(random.randint(31,60))
+        time.sleep(random.randint(31,70))
 
 def getListBisi(url):
     try:
@@ -92,4 +92,4 @@ def getReplyContent(url):
     time.sleep(1)
     
 if __name__ == '__main__':
-    bisi_reply_mulit(random.randint(1,2))
+    bisi_reply_mulit('免费VIP',random.randint(1,2))

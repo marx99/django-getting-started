@@ -64,11 +64,11 @@ def get_conn(path):
     连接对象'''
     conn = sqlite3.connect(path)
     if os.path.exists(path) and os.path.isfile(path):
-        print('硬盘上面:[{}]'.format(path))
+#        print('硬盘上面:[{}]'.format(path))
         return conn
     else:
         conn = None
-        print('内存上面:[:memory:]')
+#        print('内存上面:[:memory:]')
         return sqlite3.connect(':memory:')
 
 def get_cursor(conn):
