@@ -23,7 +23,7 @@ def bisi_reply_mulit(userid = 'marx88' , total=100):
 #    info_content = mysql.select_mysql('select content from reply_content order by RAND() limit ' + str(total*3))
 #    mysql.close_mysql()
 
-    sql_tid ='select id from bisi_discuz where reply_num > 10 order by RANDOM() limit ' + str(total)
+    sql_tid ='select id,title from bisi_discuz where reply_num > 10 order by RANDOM() limit ' + str(total)
     sql_content = 'select content from reply_content order by RANDOM() limit ' + str(total*3)
     
     conn = sqlite3API.get_conn(DB_FILE_PATH)
@@ -45,7 +45,7 @@ def bisi_reply_mulit(userid = 'marx88' , total=100):
 #        print(info_content[random.randint(0,total-1)][0])
         msg = info_content[random.randint(0,total-1)][0]
         try:
-            discuz.reply(tid[0],msg=msg)
+            discuz.reply(tid[0],msg='%s,%s' % (tid[1],msg))
         except:
             pass
         time.sleep(random.randint(31,70))
@@ -92,4 +92,4 @@ def getReplyContent(url):
     time.sleep(1)
     
 if __name__ == '__main__':
-    bisi_reply_mulit('免费VIP',random.randint(1,2))
+    bisi_reply_mulit('marx99',random.randint(1,2))
