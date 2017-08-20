@@ -99,7 +99,12 @@ class DiscuzAPI:
         else:
             print(html.text)
 #            print ('speak faild!')
-   
+            
+    def access(self):
+        ''' 访问他人空间得2金钱 '''
+        url = self.forumUrl + '/space-uid-2587889.html'
+        self.rq.get(url)    
+        
 if __name__ == '__main__':
     url = 'http://hkbbcc.net/'
     user = 'marx88'

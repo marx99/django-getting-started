@@ -16,7 +16,7 @@ import sqlite3API
 
 DB_FILE_PATH = 'hongten.db'
 
-def bisi_reply_mulit(userid = 'marx88' , total=100):
+def bisi_reply_mulit(userid = 'marx88' , total=1):
     
 #    mysql = mysqlAPI('test')
 #    info_tid = mysql.select_mysql('select id from bisi_discuz where reply_num > 40 order by RAND() limit ' + str(total))
@@ -38,6 +38,10 @@ def bisi_reply_mulit(userid = 'marx88' , total=100):
     discuz = DiscuzAPI(url,user,password)       
     discuz.login()
     discuz.sign()
+    #访问他人空间得2金钱
+    discuz.access()
+    #发记录
+    discuz.speak(msg = str(random.randint(0,10000)))
     
     total = len(info_content)
     

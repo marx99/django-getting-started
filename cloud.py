@@ -55,6 +55,16 @@ def bisi_reply_Freevip123():
     print('bisi_reply_Freevip@123 END!')    
 
 @engine.define
+def bisi_reply_All():
+    list1 = ['免费VIP','marx88','Freevip@123','marx99']
+    for user in list1:
+        print(user)
+        try:
+            bisi_discuz.bisi_reply_mulit(user,1)
+        except:
+            pass
+
+@engine.define
 def get_bisi_group():
     url1 = 'http://hkbbcc.net/group.php?gid=434'
     #第2页
